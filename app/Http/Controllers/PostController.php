@@ -15,10 +15,10 @@ class PostController extends Controller
      * @param Post Postモデル
      * @return array Postモデルリスト
      */
-    public function index(Post $post)
-    {
-        return $post->get();
-}
+    public function index(Post $post) {
+        // return $post->get();
+        return view('posts/index');
+    }
 }
 
 

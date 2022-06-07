@@ -15,10 +15,14 @@ class PostController extends Controller
      * @param Post Postモデル
      * @return array Postモデルリスト
      */
-    public function index(Post $post)
-    {
-        return $post->get();
-}
+    public function index(Post $post) {
+        // return $post->get();
+        //return view('posts/index');
+        //$test = $post->getByLimit();
+        //dd($test);
+        //return view('posts/index')->with(['posts' => $post->getByLimit()]);
+        return view('posts/index')->with(['posts' => $post->getPaginateByLimit()]);
+    }
 }
 
-
+?>

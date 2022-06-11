@@ -22,11 +22,11 @@
                 <div class="col-sm-6">
                     <h1>Website Name</h1>
                 </div>
-                <!--
+                
                 <div class="col-sm-6 align-right">
-                    <a href="/">HOME へ戻る</a>
+                    <a href="/posts/create">Create</a>
                 </div>
-                -->
+                
             </div>
         </header>
     </div><!-- container1 -->

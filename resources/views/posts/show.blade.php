@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
 
-<title>Page 1</title>
+    <title>{{ $post->title }}</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -19,14 +19,15 @@
     <div class="container">
         <header>
             <div class="row">
+                
                 <div class="col-sm-6">
-                    <h1>Website Name</h1>
+                    <h1>{{ $post->title }}</h1>
                 </div>
-                <!--
+                
                 <div class="col-sm-6 align-right">
-                    <a href="/">HOME へ戻る</a>
+                    <a href="/posts">Return</a>
                 </div>
-                -->
+                
             </div>
         </header>
     </div><!-- container1 -->
@@ -38,35 +39,31 @@
         
         <!-- $sorted = $posts->sortBy("updated_at"); -->
         
-        @foreach ($posts as $post)
+        {{-- @foreach ($posts as $post) --}}
             <div class="container-md">
+                
+                {{--
                 <div class="title">
-                    <a href="/posts/{{ $post->id }}">
-                         <class="title">{{ $post->title }}</h2o>
-                    </a>
-                    {{-- <h2 class="title">{{ $post->title }}</h2o> --}}
+                    <h2 class="title">{{ $post->title }}</h2o>
                 </div>
+                --}}
+                
                 <div class="text">
                     <p class="body">{{ $post->body }}</p>
                 </div>
             </div>
             
-            <hr>
-            
-        @endforeach
+        {{-- @endforeach --}}
     </div>
-    
-    {{-- test --}}
-    
-    {{ $posts->links() }}
-    
-    
-    <!--
+
+
+    {{-- 
     <div class="container">
         <footer>
-            <p>&copy; H2O space</p>
+            {{ $posts->links() }}
         </footer>
     </div> --> <!-- container2 -->
+    --}}
 
 </body>
 </html>

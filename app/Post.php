@@ -21,5 +21,10 @@ class Post extends Model
     // updated_atで降順に並べたあと、pagenateで指定検数のみ表示する
     return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
+    
+    public function showPost()
+    {
+        return $this->get();
+    }
 
 }

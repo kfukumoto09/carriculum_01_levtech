@@ -23,6 +23,21 @@ class PostController extends Controller
         //return view('posts/index')->with(['posts' => $post->getByLimit()]);
         return view('posts/index')->with(['posts' => $post->getPaginateByLimit()]);
     }
+    
+    /**
+     * 1個のPostページを表示する
+     * 
+     * @param Post Postモデル
+     * @return array Post
+     */
+    public function show(Post $post) {
+        return view('posts/show')->with(['post' => $post]);
+    }
+    /*
+    public function show($id, Post $post) {
+        return view('posts/show')->with(['post' => $post->showPost()[$id]]);
+    }
+    */
 }
 
 ?>

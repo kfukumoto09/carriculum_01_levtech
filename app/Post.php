@@ -26,5 +26,10 @@ class Post extends Model
     {
         return $this->get();
     }
+    
+    protected $fillable = [
+        'title',
+        'body',
+    ];
 
 }

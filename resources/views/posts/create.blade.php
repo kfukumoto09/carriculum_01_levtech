@@ -32,30 +32,25 @@
         <hr>
 
         <div class="container">
-            <form action="/posts" method="post" class="row">
+            <form action="/posts" method="POST" class="row">
+                @csrf
                 <div class="col-sm-8 col-sm-offset-2">
                     <p> Fill the following information and click "Save".</p>
 
                     <div class="form-group">
-                        <label for="title_post"> Title<span class="label label-danger">Requred</span></label>
-                        <input type="text" id="title_post" name="title_post" class="form-control" required>
+                        <label for="title_post"> Title <span class="label label-danger">Requred</span></label>
+                        <input type="text" id="title_post" name="post[title]" class="form-control" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="body_post"> Body</label>
-                        <textarea name="body_post" id="body_post" rows="10" class="form-control"></textarea>
+                        <label for="body_post"> Body <span class="label label-danger">Requred</span></label>
+                        <textarea name="post[body]" id="body_post" rows="10" class="form-control" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-default"> Save</button>
+                    {{-- <input type="submit" value="Save"/> --}}
+                    <button type="submit" class="btn btn-default"> Save </button>
                 </div><!-- col-sm-8 -->
             </form>
         </div>
 
-        <hr>
-
-    <div class="container">
-        <footer>
-            <p>&copy; H2O space</p>
-        </footer>
-    </div><!-- container2 -->
 </body>
 </html>

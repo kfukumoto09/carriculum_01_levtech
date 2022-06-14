@@ -32,19 +32,21 @@
         <hr>
 
         <div class="container">
-            <form action="/posts" method="POST" class="row">
+            <form id="posting", action="/posts" method="POST" class="row">
                 @csrf
                 <div class="col-sm-8 col-sm-offset-2">
                     <p> Fill the following information and click "Save".</p>
 
                     <div class="form-group">
                         <label for="title_post"> Title <span class="label label-danger">Requred</span></label>
-                        <input type="text" id="title_post" name="post[title]" class="form-control" required>
+                        <input type="text" id="title_post" name="post[title]" class="form-control" value="{{ old('post.title') }}">
+                        <p class="title__error" style="color:red">{{ $errors->first('post.title') }}</p>
                     </div>
                     
                     <div class="form-group">
                         <label for="body_post"> Body <span class="label label-danger">Requred</span></label>
-                        <textarea name="post[body]" id="body_post" rows="10" class="form-control" required></textarea>
+                        <textarea name="post[body]" id="body_post" rows="10" class="form-control" >{{ old('post.body') }}</textarea>
+                        <p class="body__error" style="color:red">{{ $errors->first('post.body') }}</p>
                     </div>
                     {{-- <input type="submit" value="Save"/> --}}
                     <button type="submit" class="btn btn-default"> Save </button>

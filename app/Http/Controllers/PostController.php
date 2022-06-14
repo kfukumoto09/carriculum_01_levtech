@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Http\Requests\PostRequest;
 //use Post;
 use Illuminate\Http\Request;
+
+use Illuminate\Validation\Validator;
 
 
 class PostController extends Controller
@@ -44,11 +47,30 @@ class PostController extends Controller
     }
     */
     
-    public function store(Request $request, Post $post) {
+    public function store(PostRequest $request, Post $post) 
+    {
+        /*
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|max:40',
+            'body' => 'required|max:4000',
+        ]);
+        
+        if ($validator->fails()) {
+            return redirect('post/create')
+                        ->withErrors($validator, 'posting')
+                        ->withInput();
+        }
+        */
+        
         $input = $request['post'];
         $post->fill($input)->save();
+        
+        // $validated = $request->validated();
+        // $post->fill($validator)->save();
         return redirect('/posts/' . $post->id);
     }
+
+    
 }
 
 ?>

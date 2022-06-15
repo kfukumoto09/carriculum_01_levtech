@@ -18,8 +18,11 @@ class PostController extends Controller
      * @param Post Postモデル
      * @return array Postモデルリスト
      */
-    public function index(Post $post) {
+    public function index() {
         // return $post->get();
+        $post = new Post;
+        //$test = $post->getByLimit();
+        //dd($test);
         //return view('posts/index');
         //$test = $post->getByLimit();
         //dd($test);
@@ -63,10 +66,25 @@ class PostController extends Controller
         */
         
         $input = $request['post'];
-        $post->fill($input)->save();
+        $post->fill($input)->save(); //->toSql();
+        // $post->fill($input)->toSql(); //->save()->toSql;
+        //var_dump($test);
+        //dd($post->toSql());
         
-        // $validated = $request->validated();
-        // $post->fill($validator)->save();
+        //$validated = $request->validated();
+        //$post->fill($validated)->save();
+        return redirect('/posts/' . $post->id);
+    }
+    
+    public function edit(Post $post)
+    {
+        return view('posts/edit')->with(['post' => $post]);
+    }
+    
+    public function updated(PostRequest $request, Post $post)
+    {
+        $input = $request['post'];
+        $post->fill($input)->save();
         return redirect('/posts/' . $post->id);
     }
 

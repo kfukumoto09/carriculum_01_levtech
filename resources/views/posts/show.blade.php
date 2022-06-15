@@ -25,7 +25,8 @@
                 </div>
                 
                 <div class="col-sm-6 align-right">
-                    <a href="/posts">Return</a>
+                    <a href="/posts">HOME</a><br>
+                    <a href="/posts/{{ $post->id }}/edit">Edit</a>
                 </div>
                 
             </div>

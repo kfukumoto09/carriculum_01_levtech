@@ -31,7 +31,9 @@ Route::get('/posts/{id}', function ($id = null) {
 
 
 Route::get('/posts/create','PostController@create');
-
 Route::post('/posts', 'PostController@store');
+
+Route::get('/posts/{post}/edit', 'PostController@edit');
+Route::put('/posts', 'PostController@update');
 
 ?>

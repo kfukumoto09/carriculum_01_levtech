@@ -34,6 +34,7 @@
         <div class="container">
             <form id="editing", action="/posts" method="POST" class="row">
                 @csrf
+                @method('PUT')
                 <div class="col-sm-8 col-sm-offset-2">
                     <p> Fill the following information and click "Save".</p>
 
@@ -50,7 +51,23 @@
                     </div>
                     {{-- <input type="submit" value="Save"/> --}}
                     <div class="form-group">
-                        <a href="/posts/{{ $post->id }}"> Cancel  </a>
+                        <script type="text/javascript">
+                            <!--
+                            function disp(){
+                            	// 「OK」時の処理開始 ＋ 確認ダイアログの表示
+                            	if(window.confirm("Do you cancel editing? The change won't be saved.")){
+                            		location.href = "/posts/{{ $post->id }}"; // example_confirm.html へジャンプ
+                            	}
+                            	// ************* 要改善！ Cancelのcancel状態になっていて誤解を招く **************************
+                            }
+                            // -->
+                            </script>
+                            <p><input type="button" value="Cancel" onClick="disp()"></p>
+                            {{--
+                            <script type="text/javascript">
+                                <a href="/posts/{{ $post->id }}"> Cancel  </a>
+                            </script>
+                            --}}
                         <button type="submit" class="btn btn-default"> Save </button>
                     </div>
                 </div><!-- col-sm-8 -->

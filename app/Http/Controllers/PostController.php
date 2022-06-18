@@ -81,7 +81,7 @@ class PostController extends Controller
         return view('posts/edit')->with(['post' => $post]);
     }
     
-    public function updated(PostRequest $request, Post $post)
+    public function update(PostRequest $request, Post $post)
     {
         $input = $request['post'];
         $post->fill($input)->save();

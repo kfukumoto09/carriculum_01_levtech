@@ -13,9 +13,21 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     
     <link rel="stylesheet" href="css/style.css">
+    
+   <script type="text/javascript">
+        function foo() {
+            document.getElementById("result").innerHTML = "initialized";
+            if {{ old('post.title') }} {
+                document.getElementById("result").innerHTML = "TRUE";
+            } else {
+                document.getElementById("result").innerHTML = "FALSE";
+            }
+        }
+    </script>
+
 </head>
 
-<body>
+<body onload="foo();">
     <div class="container">
         <header>
             <div class="row">
@@ -38,9 +50,13 @@
                     <p> Fill the following information and click "Save".</p>
 
                     <div class="form-group">
+                        
+                        {{-- <div id="result">機能していません！</div> --}} 
+                        
                         <label for="title_post"> Title <span class="label label-danger">Requred</span></label>
-                        <input type="text" id="title_post" name="post[title]" class="form-control" value="{{ old('post.title') }}">
+                        <input type="text" id="title_post" name="post[title]" class="form-control" value="{{ old('post.title') }}"+"test"+pre>
                         <p class="title__error" style="color:red">{{ $errors->first('post.title') }}</p>
+                        
                     </div>
                     
                     <div class="form-group">

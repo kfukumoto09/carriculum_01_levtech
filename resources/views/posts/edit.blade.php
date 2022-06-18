@@ -51,18 +51,19 @@
                     </div>
                     {{-- <input type="submit" value="Save"/> --}}
                     <div class="form-group">
-                        <script type="text/javascript">
-                            <!--
-                            function disp(){
-                            	// 「OK」時の処理開始 ＋ 確認ダイアログの表示
-                            	if(window.confirm("Do you cancel editing? The change won't be saved.")){
-                            		location.href = "/posts/{{ $post->id }}"; // example_confirm.html へジャンプ
-                            	}
-                            	// ************* 要改善！ Cancelのcancel状態になっていて誤解を招く **************************
-                            }
-                            // -->
+                            <script type="text/javascript">
+                                <!--
+                                function disp(){
+                                	// 「OK」時の処理開始 ＋ 確認ダイアログの表示
+                                	if(window.confirm("Is it okey to cancel editing? The change won't be saved.")){
+                                		location.href = "/posts/{{ $post->id }}"; // example_confirm.html へジャンプ
+                                	}
+                                	// ************* 要改善！ Cancelのcancel状態になっていて誤解を招く **************************
+                                }
+                                // -->
                             </script>
-                            <p><input type="button" value="Cancel" onClick="disp()"></p>
+                            <a type="button" onClick="disp()", href="/posts/{{ $post->id }}"> Cancel   </a>
+                            {{--<p><input type="button" value="Cancel" onClick="disp()"></p> --}}
                             {{--
                             <script type="text/javascript">
                                 <a href="/posts/{{ $post->id }}"> Cancel  </a>

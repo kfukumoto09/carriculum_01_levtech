@@ -13,6 +13,22 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     
     <link rel="stylesheet" href="css/style.css">
+    
+    <script type="text/javascript">
+        <!--
+        function delete_confirm(){
+        	// 「OK」時の処理開始 ＋ 確認ダイアログの表示
+        	if(window.confirm("CAUTION!\nAre you sure you want to completely delete this post? This action cannot be undo.")){
+        		return true;
+        		{{-- location.href = "/posts/{{ $post->id }}"; // example_confirm.html へジャンプ --}}
+        	} else {
+        	    return false;
+        	}
+        	// ************* 要改善！ Cancelのcancel状態になっていて誤解を招く **************************
+        }
+        // -->
+    </script>
+    
 </head>
 
 <body>
@@ -26,7 +42,16 @@
                 
                 <div class="col-sm-6 align-right">
                     <a href="/posts">HOME</a><br>
-                    <a href="/posts/{{ $post->id }}/edit">Edit</a>
+                    <a href="/posts/{{ $post->id }}/edit">Edit</a><br>
+                    
+                    <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post" onsubmit="return delete_confirm()">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">delete</a> 
+                    </form>
+                    
+                    <a href="" action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post" style="display:inline">
+                    {{-- <a type="button" onClick="delete_confirm()", href="/posts/{{ $post->id }}/">Delete</a> --}}
                 </div>
                 
             </div>

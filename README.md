@@ -1,1 +1,1 @@
-# carriculum_01_levtech
+# curriculum_01_levtech

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Category;
 use App\Http\Requests\PostRequest;
 //use Post;
 use Illuminate\Http\Request;
@@ -18,7 +19,8 @@ class PostController extends Controller
      * @param Post Postモデル
      * @return array Postモデルリスト
      */
-    public function index() {
+    public function index() 
+    {
         // return $post->get();
         $post = new Post;
         //$test = $post->getByLimit();
@@ -40,45 +42,24 @@ class PostController extends Controller
         return view('posts/show')->with(['post' => $post]);
     }
     
-    public function create(){
-        return view('posts/create');
+    public function create(Post $post, Category $category)
+    {
+        return view('posts/create')->with(['post'=>$post, 'categories'=>$category->get()]);
     }
-    
-    /*
-    public function show($id, Post $post) {
-        return view('posts/show')->with(['post' => $post->showPost()[$id]]);
-    }
-    */
     
     public function store(PostRequest $request, Post $post) 
     {
-        /*
-        $validator = Validator::make($request->all(), [
-            'title' => 'required|max:40',
-            'body' => 'required|max:4000',
-        ]);
-        
-        if ($validator->fails()) {
-            return redirect('post/create')
-                        ->withErrors($validator, 'posting')
-                        ->withInput();
-        }
-        */
-        
+        // \DB::enableQueryLog();
         $input = $request['post'];
         $post->fill($input)->save(); //->toSql();
+        //dd(\DB::getQueryLog());
         // $post->fill($input)->toSql(); //->save()->toSql;
-        //var_dump($test);
-        //dd($post->toSql());
-        
-        //$validated = $request->validated();
-        //$post->fill($validated)->save();
         return redirect('/posts/' . $post->id);
     }
     
-    public function edit(Post $post)
+    public function edit(Post $post, Category $category)
     {
-        return view('posts/edit')->with(['post' => $post]);
+        return view('posts/edit')->with(['post'=>$post, 'categories'=>$category->get()]);
     }
     
     public function update(PostRequest $request, Post $post)
@@ -93,6 +74,18 @@ class PostController extends Controller
         $post->delete();
         return redirect('/posts');
     }
+    
+    public function testIndex(Post $post) 
+    {
+        $data = [
+            ['name'=>'Xi', 'mail'=>'xi@gmail.com'],
+            ['name'=>'Biden', 'mail'=>'biden@gmail.com'],
+            ['name'=>'Kishida', 'mail'=>'kishida@gmail.com']
+        ];
+        return view('test/test', ['data'=>$data]);
+    }
+    
+    
 
     
 }

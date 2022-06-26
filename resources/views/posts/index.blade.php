@@ -1,3 +1,25 @@
+
+@extends('layouts.master')
+
+@section('title', 'MY BLOGGER')
+
+@section('menu')
+    <a href="/posts/create">Create a new post</a>
+@endsection
+
+@section('content')
+    <div class="container-md">
+        @each('components.indexed_post', $posts, 'post')
+    </div>
+    {{ $posts -> links() }}
+@endsection
+
+@section('footer')
+    copyright 2020 tuyono. (Edited)
+@endsection
+
+
+{{--
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -6,6 +28,7 @@
 
 <title>Page 1</title>
 
+    {{--
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -13,6 +36,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     
     <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
@@ -44,7 +68,7 @@
                     <a href="/posts/{{ $post->id }}">
                          <class="title">{{ $post->title }}</h2o>
                     </a>
-                    {{-- <h2 class="title">{{ $post->title }}</h2o> --}}
+                    
                 </div>
                 <div class="text">
                     <p class="body">{{ $post->body }}</p>
@@ -56,17 +80,8 @@
         @endforeach
     </div>
     
-    {{-- test --}}
-    
     {{ $posts->links() }}
-    
-    
-    <!--
-    <div class="container">
-        <footer>
-            <p>&copy; H2O space</p>
-        </footer>
-    </div> --> <!-- container2 -->
 
 </body>
 </html>
+--}}

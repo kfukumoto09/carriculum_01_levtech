@@ -22,7 +22,7 @@ class Post extends Model
     public function getPaginateByLimit(int $limit_count = 5) 
     {
     // updated_atで降順に並べたあと、pagenateで指定検数のみ表示する
-    return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    return $this::with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
     
     public function showPost()
@@ -33,7 +33,13 @@ class Post extends Model
     protected $fillable = [
         'title',
         'body',
+        'category_id'
     ];
+    
+    public function category()
+    {
+        return $this->belongsTo('App\Category');
+    }
     
 
 }

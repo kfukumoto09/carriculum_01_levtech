@@ -1,17 +1,33 @@
 
-@extends('layouts.master')
+@extends('layouts.app')
 
+{{--
 @section('title', 'MY BLOGGER')
 
 @section('menu')
     <a href="/posts/create">Create a new post</a>
 @endsection
+--}}
 
 @section('content')
     <div class="container-md">
+        
+        <p>User name: {{Auth::user()->name}}</p>
+        
+        <a href="/posts/create">Create a new post</a>
         @each('components.indexed_post', $posts, 'post')
+        
+        {{ $posts -> links() }}
+        
+        @foreach($questions as $question)
+            <div>
+              <a href="https://teratail.com/questions/{{ $question['id'] }}">
+                {{ $question['title'] }}
+              </a>
+             </div>
+        @endforeach
+        
     </div>
-    {{ $posts -> links() }}
 @endsection
 
 @section('footer')

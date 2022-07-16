@@ -1,5 +1,5 @@
 
-@extends('layouts.master')
+@extends('layouts.app')
 
 {{--
 <script type="text/javascript">
@@ -14,51 +14,55 @@
 </script>
 --}}
 
+{{--
 @section('title', 'MY BLOGGER')
 
 @section('menu')
     <a href="/posts">Return</a><br>
 @endsection
+--}}
+
 
 @section('content')
     <div class="container">
-            <form id="posting", action="/posts" method="POST" class="row">
-                @csrf
-                <div class="col-sm-8">
-                    <p> Fill the following information and click "Save".</p>
+        <a href="/posts">Return</a><br>
+        <form id="posting", action="/posts" method="POST" class="row">
+            @csrf
+            <div class="col-sm-8">
+                <p> Fill the following information and click "Save".</p>
 
-                    <div class="form-group">
-                        
-                        {{-- <div id="result">機能していません！</div> --}} 
-                        
-                        <label for="title_post"> Title <span class="label label-danger">Requred</span></label>
-                        <input type="text" id="title_post" name="post[title]" class="form-control" value="{{ old('post.title') }}"+"test"+pre>
-                        <p class="title__error" style="color:red">{{ $errors->first('post.title') }}</p>
-                        
-                    </div>
+                <div class="form-group">
                     
-                    <div class="form-group">
-                        <label for="body_post"> Body <span class="label label-danger">Requred</span></label>
-                        <textarea name="post[body]" id="body_post" rows="10" class="form-control" >{{ old('post.body') }}</textarea>
-                        <p class="body__error" style="color:red">{{ $errors->first('post.body') }}</p>
-                    </div>
+                    {{-- <div id="result">機能していません！</div> --}} 
                     
-                    <div class="category">
-                        <p>Category</p>
-                        <select name="post[category_id]">
-                            @foreach($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                    <label for="title_post"> Title <span class="label label-danger">Requred</span></label>
+                    <input type="text" id="title_post" name="post[title]" class="form-control" value="{{ old('post.title') }}"+"test"+pre>
+                    <p class="title__error" style="color:red">{{ $errors->first('post.title') }}</p>
                     
-                    <br>
-                    
-                    {{-- <input type="submit" value="Save"/> --}}
-                    <button type="submit" class="btn btn-default"> Save </button>
-                </div><!-- col-sm-8 -->
-            </form>
-        </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="body_post"> Body <span class="label label-danger">Requred</span></label>
+                    <textarea name="post[body]" id="body_post" rows="10" class="form-control" >{{ old('post.body') }}</textarea>
+                    <p class="body__error" style="color:red">{{ $errors->first('post.body') }}</p>
+                </div>
+                
+                <div class="category">
+                    <p>Category</p>
+                    <select name="post[category_id]">
+                        @foreach($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                
+                <br>
+                
+                {{-- <input type="submit" value="Save"/> --}}
+                <button type="submit" class="btn btn-default"> Save </button>
+            </div><!-- col-sm-8 -->
+        </form>
+    </div>
 @endsection
 
 @section('footer')

@@ -1,5 +1,5 @@
 
-@extends('layouts.master')
+@extends('layouts.app')
 
 <script type="text/javascript">
     function delete_confirm(){
@@ -14,6 +14,7 @@
     }
 </script>
 
+{{--
 @section('title', 'MY BLOGGER')
 
 @section('menu')
@@ -27,11 +28,28 @@
         <button type="submit">delete</a> 
     </form>
 @endsection
+--}}
 
 @section('content')
-    <h2 class="title_post">{{ $post->title }}</h2>
-    <p class="body">{{ $post->body }}</p>
-    <a href="">{{ $post->category->name }}</a>
+    <div class="container">
+        <a href="/posts">Return</a><br>
+        <a href="/posts/{{ $post->id }}/edit">Edit</a><br>
+        
+        <h2 class="title_post">{{ $post->title }}</h2>
+        <p class="body">{{ $post->body }}</p>
+        <a href="">{{ $post->category->name }}</a>
+        
+        </br>
+        </br>
+        
+        <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" 
+         method="post" onsubmit="return delete_confirm()">
+            @csrf
+            @method('DELETE')
+            <button type="submit">delete</a> 
+        </form>
+    </div>
+    
 @endsection
 
 @section('footer')
